@@ -16,17 +16,17 @@ objetoLiteral.cursosAprobados.push("Curso 3");
 objetoLiteral.aprobarCurso("Curso 4");
 
 // PROTOTIPOS
-function Student(name, age, cursosAprobados) {
+function StudentA(name, age, cursosAprobados) {
   this.name = name;
   this.age = age;
   this.cursosAprobados = cursosAprobados;  
 }
 
-Student.prototype.aprobarCurso = function (nuevoCursoAprobado) {
+StudentA.prototype.aprobarCurso = function (nuevoCursoAprobado) {
   this.cursosAprobados.push(nuevoCursoAprobado);
 }
 
-const primerEstudiante = new Student(
+const primerEstudiante = new StudentA(
   "Lola Landa",
   22,
   [
