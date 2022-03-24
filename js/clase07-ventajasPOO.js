@@ -34,9 +34,41 @@ const juanito = {
       ],
     },
   ]
-};
+}; //Fin
 
 // Clases
+class Lesson {
+  constructor({
+    title,
+  }) {
+    this.title = title
+  }
+}
+
+class Course {
+  constructor({
+    name,
+    lessons = [],
+  }) {
+    this.name = name;
+    this.lessons = lessons;
+  }
+}
+
+const cursoProgBasica = new Course({
+  name: "Curso de programacón básica",
+});
+
+const cursoGIT = new Course({
+  name: "Curso de GIT",
+});
+
+const cursoData = new Course({
+  name: "Curso de Data",
+});
+
+
+
 class LearningPath {
   constructor ({
     name, 
@@ -54,7 +86,7 @@ class LearningPath {
 const escWeb = new LearningPath({
   name: "Escuela de desarrolo web",
   courses: [
-    "Crso de GIT",
+    cursoGIT,
     "Curso de FlexBox",
   ]
 });
@@ -62,8 +94,9 @@ const escWeb = new LearningPath({
 const escData = new LearningPath({
   name: "Escuela de Data Science",
   courses: [
-    "Curso de Data",
+    cursoData,
     "Curso de Science",
+    cursoProgBasica,
   ]
 });
 
