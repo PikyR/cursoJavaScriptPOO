@@ -37,11 +37,32 @@ const juanito = {
 }; //Fin
 
 // Clases
-class Lesson {
+
+function videoPlay(id){
+  const URL = "http://lorem.com/video/" + id;
+  console.log("Reproduciendo: " + URL);
+}
+
+function videoPause(id){
+  const URL = "http://lorem.com/video/" + id;
+  console.log("Pausado: " + URL);
+}
+
+export class Lesson {
   constructor({
     title,
+    videoID,
   }) {
-    this.title = title
+    this.title = title;
+    this.videoID = videoID;
+  }
+
+  playLesson() {
+    videoPlay(this.videoID);
+  }
+
+  pauseLesson() {
+    videoPause(this.videoID);
   }
 }
 
