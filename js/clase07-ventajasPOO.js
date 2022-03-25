@@ -45,28 +45,66 @@ class Lesson {
   }
 }
 
+const primeraClase = new Lesson({
+  title: "Clase 1"
+});
+
+const segundaClase = new Lesson({
+  title: "Clase 2"
+});
+
+const terceraClase = new Lesson({
+  title: "Clase 3"
+});
+
 class Course {
   constructor({
     name,
     lessons = [],
   }) {
-    this.name = name;
+    this._name = name;
     this.lessons = lessons;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(newName) {
+    if (newName === "") {
+      console.error("Debes ingresar un nombre!");
+    } else {
+      this._name = newName;
+    }
   }
 }
 
 const cursoProgBasica = new Course({
   name: "Curso de programacón básica",
+  lessons: [
+    primeraClase,
+    segundaClase,
+    terceraClase,
+  ]
 });
 
 const cursoGIT = new Course({
   name: "Curso de GIT",
+  lessons: [
+    primeraClase,
+    segundaClase,
+    terceraClase,
+  ]
 });
 
 const cursoData = new Course({
   name: "Curso de Data",
+  lessons: [
+    primeraClase,
+    segundaClase,
+    terceraClase,
+  ]
 });
-
 
 
 class LearningPath {
