@@ -48,7 +48,8 @@ function videoPause(id){
   console.log("Pausado: " + URL);
 }
 
-export class Lesson {
+// export class Lesson {
+class Lesson {
   constructor({
     title,
     videoID,
@@ -82,9 +83,13 @@ class Course {
   constructor({
     name,
     lessons = [],
+    isFree = false,
+    lang = "Spanish",
   }) {
     this._name = name;
     this.lessons = lessons;
+    this.isFree = isFree;
+    this. lang = lang;
   }
 
   get name() {
@@ -106,7 +111,9 @@ const cursoProgBasica = new Course({
     primeraClase,
     segundaClase,
     terceraClase,
-  ]
+  ],
+  isFree: true,
+  lang: "Spanish"
 });
 
 const cursoGIT = new Course({
@@ -124,7 +131,9 @@ const cursoData = new Course({
     primeraClase,
     segundaClase,
     terceraClase,
-  ]
+  ],
+  isFree: false,
+  lang: "English"
 });
 
 
@@ -183,8 +192,47 @@ class Student {
   }
 }
 
+class FreeStudent extends Student {
+  constructor(props) {
+    super(props);
+  }
+
+  approveCourse(newCourse) {
+    if (newCourse.isFree) {
+      this.approvedCourses.push(newCourse);
+    } else {
+      console.warn(this.name + " Solo puedes tomar cursos gratuitos.");
+    }
+  }
+}
+
+class BasicStudent extends Student {
+  constructor(props) {
+    super(props);
+  }
+
+  approveCourse(newCourse) {
+    if (newCourse.lang !== "English") {
+      this.approvedCourses.push(newCourse);
+    } else {
+      console.warn(this.name + " Solo puedes tomar cursos en español.");
+    }
+  }
+}
+
+class ExpertStudent extends Student {
+  constructor(props) {
+    super(props);
+  }
+
+  approveCourse(newCourse) {
+    this.approvedCourses.push(newCourse);
+  }
+}
+
+
 // Primera instancia de la clase Student
-const Jonh = new Student({
+const Jonh = new FreeStudent({
   name: "Jony",
   username: "JonyXD",
   email: "JonyXD@xd.com",
@@ -196,11 +244,21 @@ const Jonh = new Student({
 });
 
 // Segunda instancia de Student
-const Mic = new Student({
+const Mic = new BasicStudent({
   name: "Mac",
   username: "macXD",
   email: "mac@xd.com",
   twitter: "MACC",
+  learningPaths: [
+    escWeb,
+  ],
+});
+
+const Leo = new ExpertStudent({
+  name: "Leo",
+  username: "leoXD",
+  email: "leo@xd.com",
+  twitter: "LEOO",
   learningPaths: [
     escWeb,
   ],
